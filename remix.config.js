@@ -15,7 +15,7 @@ module.exports = {
     v2_meta: false,
     v2_normalizeFormMethod: false,
     // makes the warning go away in v1.15+
-    v2_routeConvention: true,
+    v2_routeConvention: false,
   },
   routes(defineRoutes) {
     return createRoutesFromFolders(defineRoutes);
