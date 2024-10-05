@@ -2,7 +2,6 @@ import { cssBundleHref } from "@remix-run/css-bundle";
 
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
 
-import MainHeader from "~/components/navigation/MainHeader";
 import sharedStyles from "~/styles/shared.css";
 
 export default function App() {
@@ -19,7 +18,6 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <MainHeader />
         <Outlet />
         <ScrollRestoration />
         <Scripts />
