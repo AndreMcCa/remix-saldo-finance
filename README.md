@@ -59,20 +59,3 @@ rm -rf app
 # copy your app over
 cp -R ../my-old-remix-app/app app
 ```
-
-<!-- # remix-saldo-finance
-
-1. Create a new project with npx create-remix@1 --template
-   https://github.com/remix-run/remix/tree/remix%401.19.3/templates/remix and npm install
-2. Add package for v1 route convention: npm i @remix-run/v1-route-convention@0.1.2
-3. Adjust your remix.config.js like so (or to your own taste):
-
-const { createRoutesFromFolders } = require("@remix-run/v1-route-convention");
-
-/** @type {import('@remix-run/dev').AppConfig} \*/ module.exports = { ignoredRouteFiles: ["**/.\*"], // appDirectory:
-"app", // assetsBuildDirectory: "public/build", // serverBuildPath: "build/index.js", // publicPath: "/build/",
-serverModuleFormat: "cjs", future: { v2_dev: false, v2_errorBoundary: false, v2_headers: false, v2_meta: false,
-v2_normalizeFormMethod: false, // makes the warning go away in v1.15+ v2_routeConvention: true }, routes(defineRoutes) {
-return createRoutesFromFolders(defineRoutes); } }; 4. In the routes folder, change "\_index.tsx" to "index.tsx" (or .jsx
-if you're working in JavaScript) and remove the meta function inside it. 5. Run npm run dev
- -->
