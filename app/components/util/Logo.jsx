@@ -1,7 +1,9 @@
+import { Link } from "@remix-run/react";
+
 function Logo() {
   return (
     <h1 id="logo">
-      <a href="/">Saldo Finance</a>
+      <Link to="/">Saldo Finance</Link>
     </h1>
   );
 }
