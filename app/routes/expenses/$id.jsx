@@ -1,3 +1,5 @@
-export default function ExpensesItemRoute() {
-  return <h1>ExpensesItemRoute</h1>;
+import ExpenseForm from "../../components/expenses/ExpenseForm";
+
+export default function ExpensesItemPage() {
+  return <ExpenseForm />;
 }

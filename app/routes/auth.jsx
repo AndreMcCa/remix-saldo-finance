@@ -1,9 +1,9 @@
-import Auth from "../pages/Auth";
+import AuthForm from "../components/auth/AuthForm";
 
 import authStyles from "../styles/auth.css";
 
-export default function AuthRoute() {
-  return <Auth></Auth>;
+export default function AuthPage() {
+  return <AuthForm />;
 }
 
 export function links() {
