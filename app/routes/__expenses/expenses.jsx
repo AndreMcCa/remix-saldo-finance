@@ -4,9 +4,7 @@ import React from "react";
 
 import { Outlet } from "@remix-run/react";
 
-import ExpensesList from "../components/expenses/ExpensesList";
-
-import expensesStyles from "../styles/expenses.css";
+import ExpensesList from "~/components/expenses/ExpensesList";
 
 export default function ExpensesLayout() {
   return (
@@ -17,10 +15,6 @@ export default function ExpensesLayout() {
       </main>
     </React.Fragment>
   );
-}
-
-export function links() {
-  return [{ rel: "stylesheet", href: expensesStyles }];
 }
 
 var DUMMY_EXPENSES = [
