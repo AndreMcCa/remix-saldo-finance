@@ -14,3 +14,18 @@ export async function addExpenses(expenseData) {
     throw error;
   }
 }
+
+export async function getExpenses() {
+  try {
+    const expenses = await prisma.expense.findMany({
+      orderBy: {
+        date: "desc",
+      },
+    });
+
+    return expenses;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
