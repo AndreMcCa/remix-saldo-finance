@@ -1,9 +1,13 @@
-import { Form, Link, useActionData, useLoaderData, useNavigation /* useSubmit */ } from "@remix-run/react";
+import { Form, Link, useActionData, useMatches, useNavigation /* useSubmit */, useParams } from "@remix-run/react";
 
 function ExpenseForm() {
   const navigation = useNavigation();
+  const params = useParams();
   const validationErrors = useActionData();
-  const expense = useLoaderData();
+  const matches = useMatches();
+
+  const expenses = matches.find((match) => match.id === "routes/__expenses/expenses").data;
+  const expense = expenses.find((exp) => exp.id === params.id);
 
   const defaultValues = expense
     ? {
@@ -34,7 +38,7 @@ function ExpenseForm() {
   // };
 
   return (
-    <Form method="post" className="form" id="expense-form" /* onSubmit={submitHandler} */>
+    <Form method={expense ? "patch" : "post"} className="form" id="expense-form" /* onSubmit={submitHandler} */>
       <p>
         <label htmlFor="title">Expense Title</label>
         <input type="text" id="title" name="title" required maxLength={30} defaultValue={defaultValues.title} />
