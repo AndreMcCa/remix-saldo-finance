@@ -1,19 +1,43 @@
+import { useCatch, useLoaderData } from "@remix-run/react";
+
 import ExpenseStatistics from "~/components/expenses/ExpenseStatistics";
 import Chart from "~/components/expenses/Chart";
+import Error from "~/components/util/Error";
+
+import { getExpenses } from "~/data/expenses.server";
 
 export default function ExpensesAnalysisPage() {
+  const expenses = useLoaderData();
+
   return (
     <main>
-      <Chart expenses={DUMMY_EXPENSES} />
-      <ExpenseStatistics expenses={DUMMY_EXPENSES} />
+      <Chart expenses={expenses} />
+      <ExpenseStatistics expenses={expenses} />
     </main>
   );
 }
 
-var DUMMY_EXPENSES = [
-  { id: "e3", title: "Utilities", amount: 150.67, date: new Date(2023, 6, 5) },
-  { id: "e1", title: "Groceries", amount: 94.12, date: new Date(2023, 7, 14) },
-  { id: "e2", title: "Rent", amount: 450.0, date: new Date(2023, 8, 1) },
-  { id: "e4", title: "Internet", amount: 60.0, date: new Date(2023, 8, 10) },
-  { id: "e5", title: "Transport", amount: 30.0, date: new Date(2023, 9, 20) },
-];
+export function CatchBoundary() {
+  const caught = useCatch();
+
+  return (
+    <main>
+      <Error title={caught.statusText}>
+        {<p>{caught.data?.message || "Something went wrong. Please try again later."}</p>}
+      </Error>
+    </main>
+  );
+}
+
+export async function loader() {
+  const expenses = await getExpenses();
+
+  if (!expenses || expenses.length === 0) {
+    throw new Response("Could not find expenses", {
+      status: 404,
+      statusText: "No expenses found",
+    });
+  }
+
+  return expenses;
+}

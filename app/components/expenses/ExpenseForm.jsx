@@ -37,6 +37,10 @@ function ExpenseForm() {
   //   });
   // };
 
+  if (params.id && !expense) {
+    return <p>Expense not found</p>;
+  }
+
   return (
     <Form method={expense ? "patch" : "post"} className="form" id="expense-form" /* onSubmit={submitHandler} */>
       <p>
